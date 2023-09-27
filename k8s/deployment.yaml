@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-ingress-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      component: test-ingress
+  template:
+    metadata:
+      labels:
+        component: test-ingress
+    spec:
+      containers:
+        - name: test-ingress
+          image: tanoyg/test-node-ingress
+          ports:
+            -  containerPort: 3000
